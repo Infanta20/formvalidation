@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form validation</title>
+</head>
+<body>
+   <style>
+    .nameError, .emailError, .passwordError {
+  display: none;
+  color: red; /* to highlight error */
+}
+.input{
+    padding: 8px;
+    margin: 10px;
+
+}
+.submitbtn{
+    padding: 8px;
+    margin: 10px;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+}
+   </style> 
+
+   <div style="text-align: center;">
+    <h1>Form Validation</h1>
+    <form>
+      Name:  <input type="text" class="input" id="name" placeholder="Enter your Name"> 
+
+
+<span class="nameError"> Please enter your name</span>
+<br>
+
+    Gmail:   <input type="text"class="input" id="email" placeholder="Enter your Email">
+<span class="emailError"> Please provide valid Gmail Address</span>
+<br>
+
+Password<input type="text"class="input" id="password" placeholder="Enter the password">
+<span class="passwordError"> Password should contain 10 letters</span>
+<br>
+
+<input type="submit" id="submit" class="submitbtn">
+</form>
+</div>
+
+<script>
+ var submit = document.getElementById("submit")
+
+ submit.addEventListener("click",function(event){
+    event.preventDefault()
+
+    var nameRegex = /^[a-zA-Z ]+$/
+   var emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/
+    var passwordRegex = /^[a-zA-Z0-9]{10}$/
+
+    var name = document.getElementById("name")
+    var email = document.getElementById("email")
+    var password = document.getElementById("password")
+
+    if(nameRegex.test(name.value) == false){
+        document.querySelector(".nameError").style.display = "inline"
+    }
+    else{
+        document.querySelector(".nameError").style.display = "none"
+    }
+    if(emailRegex.test(email.value) == false){
+        document.querySelector(".emailError").style.display = "inline"
+    }
+    else{
+        document.querySelector(".emailError").style.display = "none"
+    }
+    if(passwordRegex.test(password.value) == false){
+        document.querySelector(".passwordError").style.display = "inline"
+    }
+    else{
+        document.querySelector(".passwordError").style.display = "none"
+    }
+    
+
+ })
+</script>
+</body>
+</html>
+
+
